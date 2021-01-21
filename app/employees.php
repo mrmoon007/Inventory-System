@@ -8,6 +8,6 @@ class employees extends Model
 {
     //
     protected $fillable = [
-        'name', 'email', 'phone', 'experience' ,'nid', 'image' , 'salary' , 'vacation', 'city',
+        'name', 'email', 'phone', 'address' , 'experience' ,'nid', 'image' , 'salary' , 'vacation', 'city',
     ];
 }

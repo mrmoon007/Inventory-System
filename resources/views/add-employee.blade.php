@@ -10,19 +10,23 @@
                 @csrf
                 <div class="form-group">
                     <label for="exampleInputEmail1">Employee Name</label>
-                    <input type="text" name="name" class="form-control" id="exampleInputEmail1" placeholder="Enter name">
+                    <input type="text" name="name" class="form-control" id="" placeholder="Enter name">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Email</label>
-                    <input type="email" name="email" class="form-control" id="exampleInputPassword1" placeholder="Enter email">
+                    <input type="email" name="email" class="form-control" id="" placeholder="Enter email">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Phone Number</label>
-                    <input type="number" name="phone" class="form-control" id="exampleInputEmail1" placeholder="Enter Phone number">
+                    <input type="number" name="phone" class="form-control" id="" placeholder="Enter Phone number">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Address</label>
+                    <input type="text" name="address" class="form-control" id="" placeholder="Enter address">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Experience</label>
-                    <input type="text" name="experience" class="form-control" id="exampleInputEmail1" placeholder="Enter experience">
+                    <input type="text" name="experience" class="form-control" id="" placeholder="Enter experience">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">NID No</label>

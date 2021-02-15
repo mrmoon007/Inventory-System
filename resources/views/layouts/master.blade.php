@@ -11,6 +11,12 @@
 
     <title>Moltran - Responsive Admin Dashboard Template</title>
 
+
+    {{-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css"> --}}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
+
+
     <!-- Base Css Files -->
     <link href="{{ asset('moon/css/bootstrap.min.css') }}" rel="stylesheet" />
 
@@ -195,16 +201,12 @@
                         </li>
 
                         <li class="has_sub">
-                            <a href="#" class="waves-effect"><i class="md md-invert-colors-on"></i><span> Components
+                            <a href="#" class="waves-effect"><i class="md md-invert-colors-on"></i><span>
+                                Salary ( Employees)
                                 </span><span class="pull-right"><i class="md md-add"></i></span></a>
                             <ul class="list-unstyled">
-                                <li><a href="grid.html">Grid</a></li>
-                                <li><a href="portlets.html">Portlets</a></li>
-                                <li><a href="widgets.html">Widgets</a></li>
-                                <li><a href="nestable-list.html">Nesteble</a></li>
-                                <li><a href="ui-sliders.html">Sliders </a></li>
-                                <li><a href="gallery.html">Gallery </a></li>
-                                <li><a href="pricing.html">Pricing Table </a></li>
+                                <li><a href="{{ route('add.salary') }}">Add Salary</a></li>
+                                <li><a href="{{ route('all.salary') }}">All Salary</a></li>
                             </ul>
                         </li>
 
@@ -425,7 +427,31 @@
     </div>
     <!-- END wrapper -->
 
+    {{-- @if(Session::has('message'))
+        <script>
+            var type = "{{ Session::get('alert-type', 'info') }}";
 
+            switch(type){
+                case 'info':
+                    toastr.info("{{ Session::get('message') }}");
+                    break;
+
+                case 'warning':
+                    toastr.warning("{{ Session::get('message') }}");
+                    break;
+
+                case 'success':
+                    toastr.success("{{ Session::get('message') }}");
+
+                    break;
+
+                case 'error':
+                    toastr.error("{{ Session::get('message') }}");
+                    break;
+            }
+
+        </script>
+    @endif --}}
 
 
 
@@ -448,9 +474,13 @@
     <script src="{{ asset('moon/assets/jquery-slimscroll/jquery.slimscroll.js') }}"></script>
     <script src="{{ asset('moon/assets/jquery-blockui/jquery.blockUI.js') }}"></script>
 
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
     <!-- sweet alerts -->
     <script src="{{ asset('moon/assets/sweet-alert/sweet-alert.min.js') }}"></script>
     <script src="{{ asset('moon/assets/sweet-alert/sweet-alert.init.js') }}"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script> --}}
+
 
     <!-- flot Chart -->
     <script src="{{ asset('moon/assets/flot-chart/jquery.flot.js') }}"></script>
@@ -488,8 +518,30 @@
                 time: 1200
             });
         });
-
     </script>
+
+<script>
+    @if(Session::has('message'))
+      var type = "{{ Session::get('alert-type', 'info') }}";
+      switch(type){
+          case 'info':
+              toastr.info("{{ Session::get('message') }}");
+              break;
+
+          case 'warning':
+              toastr.warning("{{ Session::get('message') }}");
+              break;
+
+          case 'success':
+              toastr.success("{{ Session::get('message') }}");
+              break;
+
+          case 'error':
+              toastr.error("{{ Session::get('message') }}");
+              break;
+      }
+    @endif
+  </script>
 
 </body>
 

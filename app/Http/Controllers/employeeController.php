@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\employees;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class employeeController extends Controller
 {
@@ -66,13 +67,25 @@ class employeeController extends Controller
         $employees->city= $request->city;
         $employees->image= $last_img;
         $employees->save();
-        return view('home');
+
+         if ($employees->save()) {
+             $notification=array(
+                 'message'=>'Employee is added successfully',
+                 'alert-type'=>'success'
+             );
+
+             return redirect()->back()->with($notification);
+         } else {
+             return Redirect()->back();
+         }
+
+
 
     }
 
     public function show()
     {
-        $all_employee=employees::all();
+        $all_employee=employees::paginate(2)->onEachSide(1);
         return view('all-employee',compact('all_employee'));
     }
 

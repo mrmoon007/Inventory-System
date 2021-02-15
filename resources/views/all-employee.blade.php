@@ -39,8 +39,10 @@
                             @endforeach
                         </tbody>
                     </table>
+                    {{$all_employee->onEachSide(3)->links()}}
 
                 </div>
+                showing {{$all_employee->firstItem()}} to {{$all_employee->lastItem()}} of {{$all_employee->total()}}
             </div>
         </div>
     </div>

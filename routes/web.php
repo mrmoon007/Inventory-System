@@ -42,3 +42,8 @@ Route::get('/customer/view/{id}', 'customerController@view')->name('view.custome
 Route::get('/customer/edit/{id}', 'customerController@edit')->name('edit.customer');
 Route::get('/customer/delete/{id}', 'customerController@delete')->name('delete.customer');
 Route::post('/customer/update/{id}', 'customerController@update')->name('update.customer');
+
+
+// salary routes here
+Route::get('/salary/add', 'salaryController@addSalary')->name('add.salary');
+Route::get('/salary/all', 'salaryController@allSalary')->name('all.salary');

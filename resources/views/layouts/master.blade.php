@@ -33,6 +33,7 @@
 
     <!-- sweet alerts -->
     <link href="{{ asset('moon/assets/sweet-alert/sweet-alert.min.css') }}" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
     <!-- Custom Files -->
     <link href="{{ asset('moon/css/helper.css') }}" rel="stylesheet" type="text/css" />
@@ -211,17 +212,11 @@
                         </li>
 
                         <li class="has_sub">
-                            <a href="#" class="waves-effect"><i class="md md-now-widgets"></i><span> Forms </span><span
+                            <a href="#" class="waves-effect"><i class="md md-now-widgets"></i><span> Attendance </span><span
                                     class="pull-right"><i class="md md-add"></i></span></a>
                             <ul class="list-unstyled">
-                                <li><a href="form-elements.html">General Elements</a></li>
-                                <li><a href="form-validation.html">Form Validation</a></li>
-                                <li><a href="form-advanced.html">Advanced Form</a></li>
-                                <li><a href="form-wizard.html">Form Wizard</a></li>
-                                <li><a href="form-editor.html">WYSIWYG Editor</a></li>
-                                <li><a href="code-editor.html">Code Editors</a></li>
-                                <li><a href="form-uploads.html">Multiple File Upload</a></li>
-                                <li><a href="form-xeditable.html">X-editable</a></li>
+                                <li><a href="{{ route('take.attendance') }}">Take Attendance</a></li>
+                                <li><a href="{{ route('all.attendance') }}">All Attendance</a></li>
                             </ul>
                         </li>
 
@@ -479,6 +474,7 @@
     <!-- sweet alerts -->
     <script src="{{ asset('moon/assets/sweet-alert/sweet-alert.min.js') }}"></script>
     <script src="{{ asset('moon/assets/sweet-alert/sweet-alert.init.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script> --}}
 
 
@@ -508,6 +504,7 @@
     <!-- Todo -->
     <script src="{{ asset('moon/js/jquery.todo.js') }}"></script>
 
+
     <script type="text/javascript">
         /* ==============================================
             Counter Up
@@ -533,11 +530,11 @@
               break;
 
           case 'success':
-              toastr.success("{{ Session::get('message') }}");
+              toastr.success("{{!! Session::get('message') !!}}");
               break;
 
           case 'error':
-              toastr.error("{{ Session::get('message') }}");
+              toastr.error("{{!! Session::get('message') !!}}");
               break;
       }
     @endif

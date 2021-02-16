@@ -47,3 +47,10 @@ Route::post('/customer/update/{id}', 'customerController@update')->name('update.
 // salary routes here
 Route::get('/salary/add', 'salaryController@addSalary')->name('add.salary');
 Route::get('/salary/all', 'salaryController@allSalary')->name('all.salary');
+
+
+
+// attendance routes here
+Route::get('/attendance/take', 'attendanceController@takeAttendance')->name('take.attendance');
+Route::post('/attendance/insert', 'attendanceController@insertAttendance')->name('insert.attendance');
+Route::get('/attendance/all', 'attendanceController@allAttendance')->name('all.attendance');

@@ -76,7 +76,11 @@ class employeeController extends Controller
 
              return redirect()->back()->with($notification);
          } else {
-             return Redirect()->back();
+            $notification=array(
+                'message'=>'input filled is requered',
+                'alert-type'=>'error'
+            );
+             return Redirect()->back()->with($notification);
          }
 
 

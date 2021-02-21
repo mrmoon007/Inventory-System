@@ -54,3 +54,5 @@ Route::get('/salary/all', 'salaryController@allSalary')->name('all.salary');
 Route::get('/attendance/take', 'attendanceController@takeAttendance')->name('take.attendance');
 Route::post('/attendance/insert', 'attendanceController@insertAttendance')->name('insert.attendance');
 Route::get('/attendance/all', 'attendanceController@allAttendance')->name('all.attendance');
+Route::get('/attendance/edit/{edit}', 'attendanceController@edit')->name('edit.attendance');
+Route::post('/attendance/update', 'attendanceController@update_attendance')->name('update.attendance');

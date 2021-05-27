@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -56,3 +57,22 @@ Route::post('/attendance/insert', 'attendanceController@insertAttendance')->name
 Route::get('/attendance/all', 'attendanceController@allAttendance')->name('all.attendance');
 Route::get('/attendance/edit/{edit}', 'attendanceController@edit')->name('edit.attendance');
 Route::post('/attendance/update', 'attendanceController@update_attendance')->name('update.attendance');
+
+//categories routes here
+Route::get('/category/add', 'CategoriesController@addCategory')->name('add.category');
+Route::post('/category/create', 'CategoriesController@createCategory')->name('create.category');
+Route::get('/category/all', 'CategoriesController@allCategory')->name('all.category');
+Route::get('/category/edit/{id}', 'CategoriesController@edit')->name('edit.category');
+Route::get('/category/delete/{id}', 'CategoriesController@delete')->name('delete.category');
+Route::post('/category/update/{id}', 'CategoriesController@update')->name('update.category');
+
+
+
+//products routes here
+Route::get('/product/add', 'productsController@index')->name('add.products');
+Route::get('/products/all', 'productsController@show')->name('all.products');
+// Route::post('/product/create', 'productsController@create')->name('create.products');
+// Route::get('/product/view/{id}', 'productsController@view')->name('view.products');
+// Route::get('/product/edit/{id}', 'productsController@edit')->name('edit.products');
+// Route::get('/product/delete/{id}', 'productsController@delete')->name('delete.products');
+// Route::post('/product/update/{id}', 'productsController@update')->name('update.products');

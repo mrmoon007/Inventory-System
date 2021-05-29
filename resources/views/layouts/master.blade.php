@@ -9,7 +9,7 @@
 
     <link rel="shortcut icon" href="{{ asset('moon/images/favicon_1.ico') }}">
 
-    <title>Moltran - Responsive Admin Dashboard Template</title>
+    <title>Inventory</title>
 
 
     {{-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css"> --}}
@@ -235,8 +235,8 @@
                                 Products
                                 </span><span class="pull-right"><i class="md md-add"></i></span></a>
                             <ul class="list-unstyled">
-                                <li><a href="{{ route('add.product') }}">Add Products</a></li>
-                                <li><a href="{{ route('all.product') }}">All Products</a></li>
+                                <li><a href="{{ route('add.products') }}">Add Products</a></li>
+                                <li><a href="{{ route('all.products') }}">All Products</a></li>
                             </ul>
                         </li>
 

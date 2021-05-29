@@ -69,10 +69,10 @@ Route::post('/category/update/{id}', 'CategoriesController@update')->name('updat
 
 
 //products routes here
-Route::get('/product/add', 'productsController@index')->name('add.products');
-Route::get('/products/all', 'productsController@show')->name('all.products');
-// Route::post('/product/create', 'productsController@create')->name('create.products');
-// Route::get('/product/view/{id}', 'productsController@view')->name('view.products');
-// Route::get('/product/edit/{id}', 'productsController@edit')->name('edit.products');
-// Route::get('/product/delete/{id}', 'productsController@delete')->name('delete.products');
-// Route::post('/product/update/{id}', 'productsController@update')->name('update.products');
+Route::get('/product/add', 'ProductController@index')->name('add.products');
+Route::get('/products/all', 'ProductController@show')->name('all.products');
+Route::post('/product/create', 'ProductController@create')->name('create.products');
+Route::get('/product/view/{id}', 'ProductController@view')->name('view.products');
+Route::get('/product/edit/{id}', 'ProductController@edit')->name('edit.products');
+Route::get('/product/delete/{id}', 'ProductController@delete')->name('delete.products');
+Route::post('/product/update/{id}', 'ProductController@update')->name('update.products');

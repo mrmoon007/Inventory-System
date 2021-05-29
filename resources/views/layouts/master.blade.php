@@ -294,7 +294,10 @@
         <div class="content-page">
             <!-- Start content -->
             <div class="content">
-                <div class="container">
+                
+                    @yield('content')
+                
+                {{-- <div class="container">
 
                     <!-- Page-Title -->
                     {{-- <div class="row">
@@ -309,10 +312,6 @@
                     </div> --}}
 
                     <!-- Pls Remove -->
-                    <div class="row">
-                        @yield('content')
-                    </div>
-
 
                 </div> <!-- container -->
 

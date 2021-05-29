@@ -111,7 +111,7 @@ class ProductController extends Controller
 
         ]);
 
-        return redirect()->route('all.customer');
+        return redirect()->route('all.products');
     }
 
     public function delete($id)

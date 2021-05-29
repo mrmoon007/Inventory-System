@@ -76,3 +76,8 @@ Route::get('/product/view/{id}', 'ProductController@view')->name('view.products'
 Route::get('/product/edit/{id}', 'ProductController@edit')->name('edit.products');
 Route::get('/product/delete/{id}', 'ProductController@delete')->name('delete.products');
 Route::post('/product/update/{id}', 'ProductController@update')->name('update.products');
+
+
+//Pos routes here
+Route::get('/pos', 'PosController@index')->name('pos');
+

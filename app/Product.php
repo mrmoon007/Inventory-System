@@ -19,4 +19,9 @@ class Product extends Model
         'buying_price',
         'selling_price',
     ];
+
+    public function category()
+    {
+        return $this->hasOne(Catagories::class,'id','cate_id');
+    }
 }

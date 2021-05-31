@@ -50,8 +50,10 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Image</label>
-                    <input type="file" name="image" class="form-control" id="exampleInputEmail1" >
+                    <input type="file" name="image" class="form-control" 
+                    id="exampleInputEmail1" >
                 </div>
+                
                 <button type="submit" class="btn btn-purple waves-effect waves-light">Submit</button>
             </form>
         </div><!-- panel-body -->

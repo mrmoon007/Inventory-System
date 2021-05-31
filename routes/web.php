@@ -81,3 +81,9 @@ Route::post('/product/update/{id}', 'ProductController@update')->name('update.pr
 //Pos routes here
 Route::get('/pos', 'PosController@index')->name('pos');
 
+// cart route here
+
+Route::post('/add_cart', 'PosController@addCart')->name('add-cart');
+Route::post('/update_cart/{rowId}', 'PosController@updateCart')->name('cart_update');
+Route::get('/delete_cart/{rowId}', 'PosController@deleteCart')->name('cart_delete');
+

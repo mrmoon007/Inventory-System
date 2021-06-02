@@ -16,32 +16,29 @@
     </div>
     <div class="row">
         <br>
-        <div class="col-lg-12 col-md-12 col-sm-12 ">
-            <div class="portfolioFilter">
-                @foreach ($categories as $item)
-                <a href="#" data-filter="*" class="current">{{$item->cate_name}}</a>
-                @endforeach
+            <div class="col-lg-12 col-md-12 col-sm-12 ">
+                <div class="portfolioFilter">
+                    @foreach ($categories as $item)
+                    <a href="#" data-filter="*" class="current">{{$item->cate_name}}</a>
+                    @endforeach
+                </div>
             </div>
-        </div>
     </div>
     <div class="row">
         <br>
         <div class="col-lg-6 bg-secondary">
-            <div class="panel-heading bg-success  ">
-                <div >
-                    <h3 class="panel-title pull-left">Customer</h3>
-                    <a class="btn btn-primary waves-effect waves-light pull-right" data-toggle="modal" data-target="#con-close-modal" >Add New</a>
-                </div>
-                <div style="margin-top: 10%">
-                    <select>
-                        <option>Select Customer</option>
-                        @foreach ($customer as $item) 
-                        <option>{{$item->name}}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
+            
             <div class="price_card text-center">
+                <div class="panel-heading m-4 ">
+                    <div>
+                        <h3 class="panel-title pull-left">Customer</h3>
+                    </div>
+                    <div >
+                        
+                        <a class="btn btn-primary waves-effect waves-light pull-right" data-toggle="modal" data-target="#con-close-modal" >Add New</a>
+                    </div>
+                    
+                </div>
                 <ul class="price-features">
                     <table class="table">
                         <thead>
@@ -63,7 +60,7 @@
                                 <th>
                                     <form action="{{route('cart_update',$data->rowId)}}" method="POST">
                                         @csrf
-                                        <input type="number" name="" value="{{ $data->qty }}" style="width: 70px" >
+                                        <input type="number" name="qty" value="{{ $data->qty }}" style="width: 70px" >
                                         <button type="submit" class="btn btn-sm btn-success" style="margin-top: -2px;">
                                             <i class="fas fa-check"></i>
                                         </button>
@@ -87,11 +84,35 @@
                     <span class="name">12</span> --}}
                     <p>Quantity: {{Cart::count()}}</p>
                     <p>Sub Total: {{Cart::subtotal()}}</p>
-                    <p>Vat: </p>
+                    <p>Vat: {{Cart::tax()}} </p>
                     <hr>
-                    <p>Total: 00.00</p>
+                    <p>Total: {{Cart::total()}}</p>
                 </div>
-
+                <form action="{{ route('invoice') }}" method="POST">
+                    @csrf
+                    <div class="panel-heading bg-info">
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        <div  style="margin-top: 10%">
+                            <select name="cust_id" class="form-control">
+                                <option disabled selected >Select Customer</option>
+                                @foreach ($customer as $item) 
+                                <option value="{{$item->id}}"  >{{$item->name}}</option>
+                                 
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success" >Invoice Create</button>
+                </form>
+                
             </div>
         </div>
         <div class="col-lg-6">
@@ -152,6 +173,8 @@
 
 </div> <!-- container -->
 
+
+{{-- customer create code start --}}
 {{-- Modal Content is Responsive --}}
 
 <form action="{{ route('create.customer') }} " method="POST" enctype="multipart/form-data">

@@ -8,8 +8,7 @@ use App\Product;
 use Illuminate\Http\Request;
 //use Gloudemans\Shoppingcart\Facades\Cart;
 use Cart;
-
-
+use Illuminate\Auth\Recaller;
 
 class PosController extends Controller
 {
@@ -40,7 +39,7 @@ class PosController extends Controller
     {
        // $data=array();
         $qty=$request->qty;
-       
+       //return $rowId;
 
         Cart::update($rowId, $qty); 
         // echo "<pre>";
@@ -52,5 +51,22 @@ class PosController extends Controller
     {
         Cart::remove($rowId);
         return redirect()->back();
+    }
+
+    public function invoice(Request $request)
+    {
+        $validatedData = $request->validate([
+            'cust_id' => ['required'],
+            
+        ],
+        [
+            'cust_id.required'=>'Select A Customer First!!'
+        ]);
+
+        $cust_id=$request->cust_id;
+        $customer=customers::find($cust_id)->first();
+        $content=Cart::content();
+
+        return view('invoice',compact('customer','content'));
     }
 }

@@ -6,8 +6,9 @@ use App\Catagories;
 use App\customers;
 use App\Product;
 use Illuminate\Http\Request;
-//use Gloudemans\Shoppingcart\Facades\Cart;
+// use Gloudemans\Shoppingcart\Facades\Cart;
 use Cart;
+use PDF;
 use Illuminate\Auth\Recaller;
 
 class PosController extends Controller
@@ -64,9 +65,23 @@ class PosController extends Controller
         ]);
 
         $cust_id=$request->cust_id;
-        $customer=customers::find($cust_id)->first();
+        $customer=customers::find($cust_id);
         $content=Cart::content();
 
         return view('invoice',compact('customer','content'));
     }
+
+    public function createPDF($id) {
+        ini_set('max_execution_time', 300);
+        
+        $cust_id=$id;
+        $customer=customers::find($cust_id)->first();
+        $content=Cart::content();
+        // share data to view
+        view()->share('invoice',compact('customer','content'));
+        $pdf = PDF::loadView('invoicePdf', compact('customer','content'));
+  
+        // download PDF file with download method
+        return $pdf->download('invoice.pdf');
+      }
 }

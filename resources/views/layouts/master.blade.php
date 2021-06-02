@@ -179,8 +179,16 @@
                 <div id="sidebar-menu">
                     <ul>
                         <li>
-                            <a href="index.html" class="waves-effect"><i class="md md-home"></i><span> Dashboard
+                            <a href="{{route('home')}}" class="waves-effect"><i class="md md-home"></i><span> Dashboard
                                 </span></a>
+                        </li>
+                        <li class="has_sub">
+                            <a href="#" class="waves-effect"><i class="fas fa-users"></i><span> Point of sales (POS) </span><span
+                                    class="pull-right"><i class="md md-add"></i></span></a>
+                            <ul class="list-unstyled">
+                                <li><a href="{{ route('pos') }}">POS</a></li>
+                                {{-- <li><a href="{{ route('all.employee') }}">All Employee</a></li> --}}
+                            </ul>
                         </li>
 
                         <li class="has_sub">
@@ -280,7 +288,7 @@
                         </li>
                     </ul>
                     <div class="clearfix"></div>
-                </div>
+                </div>z
                 <div class="clearfix"></div>
             </div>
         </div>

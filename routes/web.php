@@ -88,4 +88,5 @@ Route::post('/update_cart/{rowId}', 'PosController@updateCart')->name('cart_upda
 Route::get('/delete_cart/{rowId}', 'PosController@deleteCart')->name('cart_delete');
 Route::post('/invoice/', 'PosController@invoice')->name('invoice');
 Route::get('/invoice/{id}', 'PosController@createPDF')->name('pdf');
+Route::post('/finalInvoice', 'PosController@finalInvoice')->name('finalInvoice');
 

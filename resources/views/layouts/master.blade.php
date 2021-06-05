@@ -19,6 +19,7 @@
 
     <!-- Base Css Files -->
     <link href="{{ asset('moon/css/bootstrap.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('moon/css/noPrint.css') }}"
 
     <!-- Font Icons -->
     <link href="{{ asset('moon/assets/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" />
@@ -52,7 +53,7 @@
     <div id="wrapper">
 
         <!-- Top Bar Start -->
-        <div class="topbar">
+        <div class="topbar no-print">
             <!-- LOGO -->
             <div class="topbar-left">
                 <div class="text-center">
@@ -173,7 +174,7 @@
 
         <!-- ========== Left Sidebar Start ========== -->
 
-        <div class="left side-menu">
+        <div class="left no-print side-menu">
             <div class="sidebar-inner slimscrollleft">
                 <!--- Divider -->
                 <div id="sidebar-menu">
@@ -325,7 +326,7 @@
 
             </div> <!-- content -->
 
-            <footer class="footer text-right">
+            <footer  class="footer no-print text-right">
                 2015 © Moltran.
             </footer>
 
@@ -336,7 +337,7 @@
 
 
         <!-- Right Sidebar -->
-        <div class="side-bar right-bar nicescroll">
+        <div class="side-bar no-print right-bar nicescroll">
             <h4 class="text-center">Chat</h4>
             <div class="contact-list nicescroll">
                 <ul class="list-group contacts-list">

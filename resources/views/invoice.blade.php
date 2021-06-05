@@ -1,11 +1,54 @@
-@extends('layouts.master')
-@section('content')
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
+        <meta name="author" content="Coderthemes">
+
+        {{-- <link rel="shortcut icon" href="images/favicon_1.ico">
+
+        <title>Moltran - Responsive Admin Dashboard Template</title>
+
+        <!-- Base Css Files -->
+        <link href="css/bootstrap.min.css" rel="stylesheet" />
+
+        <!-- Font Icons -->
+        <link href="assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+        <link href="assets/ionicon/css/ionicons.min.css" rel="stylesheet" />
+        <link href="css/material-design-iconic-font.min.css" rel="stylesheet">
+
+        <!-- animate css -->
+        <link href="css/animate.css" rel="stylesheet" />
+
+        <!-- Waves-effect -->
+        <link href="css/waves-effect.css" rel="stylesheet">
+
+        <!-- Custom Files -->
+        <link href="css/helper.css" rel="stylesheet" type="text/css" />
+        <link href="css/style.css" rel="stylesheet" type="text/css" />
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="js/modernizr.min.js"></script> --}}
+        @include('body.css')
+        
+    </head>
+
+
+
+    <body class="fixed-left">
             <!-- ============================================================== -->
             <!-- Start right Content here -->
             <!-- ============================================================== -->                      
             {{-- <div class="content-page"> --}}
                 <!-- Start content -->
-                <div class="content">
+                <div class="content print-container">
                     <div class="container">
 
                         <!-- Page-Title -->
@@ -13,7 +56,7 @@
                             <div class="col-sm-12">
                                 <h4 class="pull-left page-title">Invoice</h4>
                                 <ol class="breadcrumb pull-right">
-                                    <li><a href="#">Moltran</a></li>
+                                    <li><a href="{{route('home')}}">Moltran</a></li>
                                     <li><a href="#">Pages</a></li>
                                     <li class="active">Invoice</li>
                                 </ol>
@@ -94,14 +137,14 @@
                                                 {{-- <p class="text-right">Discout: 12.9%</p> --}}
                                                 <p class="text-right">VAT: {{Cart::tax()}}</p>
                                                 <hr>
-                                                <h3 class="text-right">{{Cart::total()}}</h3>
+                                                <h3 class="text-right">Total :  {{Cart::total()}}</h3>
                                             </div>
                                         </div>
                                         <hr>
                                         <div class="hidden-print">
                                             <div class="pull-right">
                                                 <a href="#" onclick="window.print()" class="btn btn-inverse waves-effect waves-light"><i class="fa fa-print"></i></a>
-                                                <a href="{{route('pdf',$customer->id)}}" class="btn btn-primary waves-effect waves-light">Submit</a>
+                                                <a href="" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#con-close-modal">Submit</a>
                                             </div>
                                         </div>
                                     </div>
@@ -122,8 +165,92 @@
                 </footer> --}}
 
             </div>
+
+
+
             <!-- ============================================================== -->
-            <!-- End Right content here -->
+            <!-- add new -->
             <!-- ============================================================== -->
+            
+    <form action="{{ route('finalInvoice') }} " method="POST" enctype="multipart/form-data">
+        @csrf
+        <div id="con-close-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog"> 
+                <div class="modal-content"> 
+                    <div class="modal-header"> 
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button> 
+                        <h4 class="modal-title">Invoice of {{$customer->name}}
+                        <span class="pull-right">Total : {{Cart::total()}} Tk</span>
+                        </h4> 
+                    </div> 
+                    <div class="modal-body"> 
+                        <div class="row"> 
+                            <div class="col-md-4"> 
+                                <div class="form-group"> 
+                                    <label for="field-1" class="control-label">Payment</label> 
+                                    <select class="form-control" name="payment_status">
+                                        <option value="cash" >Hand Cash</option>
+                                        <option value="cheque" >Cheque</option>
+                                        <option value="due" >Due</option>
+                                    </select>
+                                </div> 
+                            </div> 
+                            <div class="col-md-4"> 
+                                <div class="form-group"> 
+                                    <label for="field-5" class="control-label">pay</label> 
+                                    <input type="text" name="pay" class="form-control" id="field-5" > 
+                                </div> 
+                            </div> 
+                            <div class="col-md-4"> 
+                                <div class="form-group"> 
+                                    <label for="field-6" class="control-label">Due</label> 
+                                    <input type="text" name="due" class="form-control" id="field-6"> 
+                                </div> 
+                            </div> 
+                        </div> 
+                    </div>
+                    <input type="hidden" name="customer_id" value="{{$customer->id}}"> 
+                    <input type="hidden" name="order_date" value="{{date('d/m/y')}}"> 
+                    <input type="hidden" name="oder_status" value="pending"> 
+                    <input type="hidden" name="total_products" value="{{Cart::count()}}"> 
+                    <input type="hidden" name="sub_total" value="{{Cart::subtotal()}}"> 
+                    <input type="hidden" name="vat" value="{{Cart::tax()}}"> 
+                    <input type="hidden" name="total" value="{{Cart::total()}}"> 
+                    
+                    <div class="modal-footer"> 
+                        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button> 
+                        <button type="submit" class="btn btn-info waves-effect waves-light">Save changes</button> 
+                    </div> 
+                </div> 
+            </div>
+        </div><!-- /.modal -->
+
+    </form>
+
+
+
+
+            @include('body.js')
+            {{-- <script>
+                var resizefunc = [];
+            </script>
     
-@endsection
+            <!-- jQuery  -->
+            <script src="js/jquery.min.js"></script>
+            <script src="js/bootstrap.min.js"></script>
+            <script src="js/waves.js"></script>
+            <script src="js/wow.min.js"></script>
+            <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
+            <script src="js/jquery.scrollTo.min.js"></script>
+            <script src="assets/jquery-detectmobile/detect.js"></script>
+            <script src="assets/fastclick/fastclick.js"></script>
+            <script src="assets/jquery-slimscroll/jquery.slimscroll.js"></script>
+            <script src="assets/jquery-blockui/jquery.blockUI.js"></script>
+    
+    
+            <!-- CUSTOM JS -->
+            <script src="js/jquery.app.js"></script> --}}
+        
+        </body>
+    </html> 
+
